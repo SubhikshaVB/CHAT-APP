@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "react-scripts build",
     "server": "nodemon backend/server.js"
   },
   "type": "module",
