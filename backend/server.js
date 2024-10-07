@@ -32,7 +32,7 @@
 // 	connectToMongoDB();
 // 	console.log(`Server Running on port ${PORT}`);
 // });
-
+import cors from 'cors';
 import path from "path";
 import express from "express";
 import dotenv from "dotenv";
@@ -49,6 +49,15 @@ dotenv.config();
 
 const __dirname = path.resolve();
 const PORT = process.env.PORT || 5000;
+
+// Allow cross-origin requests from your frontend domain
+const corsOptions = {
+	origin: ['https://subhi-chat-app.onrender.com', 'http://localhost:3000'], // Add your frontend domains
+	methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+	credentials: true, // Enable sending cookies across domains
+  };
+  
+  app.use(cors(corsOptions));
 
 app.use(express.json()); // to parse the incoming requests with JSON payloads (from req.body)
 app.use(cookieParser());
@@ -70,13 +79,3 @@ server.listen(PORT, () => {
 	console.log(`Server Running on port ${PORT}`);
 });
 
-import cors from 'cors';
-
-// Allow cross-origin requests from your frontend domain
-const corsOptions = {
-  origin: ['https://subhi-chat-app.onrender.com', 'http://localhost:3000'], // Add your frontend domains
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
-  credentials: true, // Enable sending cookies across domains
-};
-
-app.use(cors(corsOptions));
