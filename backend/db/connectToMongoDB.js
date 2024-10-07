@@ -3,6 +3,7 @@ const connectToMongoDB = async () => {
     try{
         // await mongoose.connect(process.env.MONGO_DB_URI);
         // console.log("Connected to MongoDB");
+        console.log("MongoDB URI:", process.env.MONGO_DB_URI);
         console.log("Connecting to MongoDB with URI:", process.env.MONGO_DB_URI); // Log the URI
         await mongoose.connect(process.env.MONGO_DB_URI, {
           useNewUrlParser: true,
