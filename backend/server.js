@@ -69,3 +69,14 @@ server.listen(PORT, () => {
 	initializeSocket(server); // Initialize socket for real-time communication
 	console.log(`Server Running on port ${PORT}`);
 });
+
+import cors from 'cors';
+
+// Allow cross-origin requests from your frontend domain
+const corsOptions = {
+  origin: ['https://subhi-chat-app.onrender.com', 'http://localhost:3000'], // Add your frontend domains
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+  credentials: true, // Enable sending cookies across domains
+};
+
+app.use(cors(corsOptions));
