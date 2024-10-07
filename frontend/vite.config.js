@@ -9,10 +9,15 @@ export default defineConfig({
     proxy: {
       "/api" : {
         target: "http://localhost:5000",
-      }, 
+      },
     },
   },
   build: {
-    outDir: 'dist'
+    outDir: 'dist',
+    rollupOptions: {
+      input: {
+        main: 'index.html', // Ensure this points to your main HTML file
+      },
+    },
   },
 });
